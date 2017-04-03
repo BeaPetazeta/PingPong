@@ -1,0 +1,11 @@
+{
+    "name": "leanprogrammers/campeonato",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "LeanProgrammers\\Framework\\": "framework/",
+            "LeanProgrammers\\Controller\\": "src/controller/"
+        }
+    }
+}

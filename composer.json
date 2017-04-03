@@ -5,7 +5,8 @@
     "autoload": {
         "psr-4": {
             "LeanProgrammers\\Framework\\": "framework/",
-            "LeanProgrammers\\Controller\\": "src/controller/"
+            "LeanProgrammers\\Controller\\": "src/controller/",
+            "LeanProgrammers\\Repository\\": "src/repository/"
         }
     }
 }

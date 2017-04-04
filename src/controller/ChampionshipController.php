@@ -19,3 +19,5 @@ class ChampionshipController
     }
 }
 
+//AQUI HAY QUE HACER LA CONSULTA A LA BBDD
+

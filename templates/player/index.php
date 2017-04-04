@@ -1,5 +1,5 @@
 <ul>
     <?php foreach ($players as $player) : ?>
-        <li><?= $player ?></li> 
+        <li><?= $player->getName() ?></li>
     <?php endforeach; ?>
 </ul>

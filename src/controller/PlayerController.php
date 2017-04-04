@@ -12,7 +12,7 @@ class PlayerController
 
         $view = new View('player');
 
-        $view->render('index.php', ['players' => $players]);
+        $view->render('index.php', ['players' =>$players]);
 
     }
 }

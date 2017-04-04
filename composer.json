@@ -6,7 +6,8 @@
         "psr-4": {
             "LeanProgrammers\\Framework\\": "framework/",
             "LeanProgrammers\\Controller\\": "src/controller/",
-            "LeanProgrammers\\Repository\\": "src/repository/"
+            "LeanProgrammers\\Repository\\": "src/repository/",
+            "LeanProgrammers\\Model\\": "src/model/"
         }
     }
 }

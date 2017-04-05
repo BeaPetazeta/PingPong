@@ -11,6 +11,7 @@ class PlayerRepository
         $stmt = $pdo->prepare('SELECT name FROM users');
         $stmt->execute();
         $result = $stmt->fetchAll();
+        $players = [];
 
         foreach($result as $row){
             $players[] = new Player($row['name']);

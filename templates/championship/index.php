@@ -1,5 +1,6 @@
-<h1>
-	
-	HOLA
-	
-</h1>
+
+	<ul>
+    <?php foreach ($championships as $championship) : ?>
+    	<li><?= $championship['name'] ?></li>
+    <?php endforeach; ?>
+	</ul>

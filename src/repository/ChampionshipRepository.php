@@ -3,23 +3,30 @@
 namespace LeanProgrammers\Repository;
 
 use LeanProgrammers\Model\Championship;
+use LeanProgrammers\Framework\Database;
 
-class ChampionshipRepository
-{
-
+class ChampionshipRepository{
+//devuelve lista de campeonatos
     static public function getAll(){
-    	$players = [
-			1 => "Adri",
-			2 => "Bea",
-			3 => "Miguel",
-			4 => "Emilio",
-			5 => "Gabi",
-			6 => "David",
-			7 => "Jorge",
-			8 => "Mario",
-			9 => "Paco",
-			10 => "Elena"
-		];
-        return $players;
+    	$pdo = Database::getInstance();
+        $stmt = $pdo->prepare('SELECT name FROM championship');
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+       
+        return $result;
     }
+//devuelve el campeonato introduciendole un id
+    static public function getById($id){
+
+		$pdo = Database::getInstance();
+        $stmt = $pdo->prepare("SELECT name FROM championship where id=:id");
+        $stmt->execute([':id'=>$id]);
+        $result = $stmt->fetch(); //solo fetch porque queremos un solo campeonato
+        
+        $championship = new Championship($result["name"]);
+
+
+        return $championship;
+    }
+
 }

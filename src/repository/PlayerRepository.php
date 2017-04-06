@@ -29,7 +29,7 @@ class PlayerRepository
         return $player;
     }
 
-    static private function createFromRow($row){
+    static public function createFromRow($row){
         $player = new Player($row['name']);
         $player->setId($row['id']);
         $player->setEmail($row['email']);

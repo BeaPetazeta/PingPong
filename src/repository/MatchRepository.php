@@ -10,26 +10,26 @@ class MatchRepository{
         $pdo = Database::getInstance();
         $stmt = $pdo->prepare(
             'SELECT (
-                SELECT USERS.name FROM ROUND
+                SELECT USERS.name FROM game
                 INNER JOIN USERS
-                WHERE ROUND.player1 = USERS.id
-                AND ROUND.id = 1
+                WHERE game.player1 = USERS.id
+                AND game.id = 1
             ) AS player1, (
-                SELECT USERS.name FROM ROUND
+                SELECT USERS.name FROM game
                 INNER JOIN USERS
-                WHERE ROUND.player2 = USERS.id
-                AND ROUND.id = 1
+                WHERE game.player2 = USERS.id
+                AND game.id = 1
             ) AS player2'
             );
         $stmt->execute();
-        $roundplayers = $stmt->fetchAll();
+        $gameplayers = $stmt->fetchAll();
 
 
-        foreach ($roundplayers as $rows) {
+        foreach ($gameplayers as $rows) {
             $players1[]=$rows[0];
 
         }
-        foreach ($roundplayers as $rows) {
+        foreach ($gameplayers as $rows) {
             $players2[]=$rows[1];
 
         }
@@ -40,7 +40,7 @@ class MatchRepository{
     //creamos el partido pasandole una id
     static public function getById($id){
         $pdo = Database::getInstance();
-        $stmt = $pdo->prepare('SELECT * FROM round WHERE id=:id');
+        $stmt = $pdo->prepare('SELECT * FROM game WHERE id=:id');
         $stmt->execute([':id'=>$id]);
         $result = $stmt->fetch();
         $match = self::createFromRow($result);

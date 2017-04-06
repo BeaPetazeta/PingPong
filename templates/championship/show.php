@@ -7,7 +7,8 @@
 <h2>Lista de partidos:</h2>
 <ul>
 	<?php
-	foreach($championship->matchMate() as $match): ?>
+	$firstRound = $championship->createFirstRound();
+	foreach($firstRound->getMatches() as $match): ?>
 		<li><?= $match ?></li>
 	<?php endforeach ?>
 

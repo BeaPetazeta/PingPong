@@ -16,6 +16,10 @@ class Match{
        $this->player2 = $player2;
     }
 
+    function __toString(){
+        return $this->player1->getName()." - ". $this->player2->getName();
+    }
+
     /*Función setDate, para introducirle fecha a el partido*/
     public function setDate( $date )
     {
@@ -56,21 +60,19 @@ class Match{
     public function getPointsPlayer2(){
         return $this->pointsPlayer2;
     }
+    /*Se recogen dos número que pertenecen a la puntuación del partido y devuelve el ganador, esto datos se refieren a la puntuación del primer jugador y segundo en es sorden respectivamente*/
+    public function getWinner(){
+        if($this->pointsPlayer1 > $this->pointsPlayer2){
+            return $this->player1;
+        }elseif($this->pointsPlayer1 < $this->pointsPlayer2){
+            return $this->player2;
+        }
+    }
 
 
 
 
 
-    /*Función match donde se recogen dos número que pertenecen a la puntuación del partido y devuelve el ganador, esto datos se refieren a la puntuación del primer jugador y segundo en es sorden respectivamente*/
-    // public function setMatch( $pointsPlayer1, $pointsPlayer2 )
-    // {
 
-    // 	/*TODO */
-    // 	Crear filtro por si introducen valores erroneos
-    // 	if( $pointsPlayer1 > $pointsPlayer2 ){
-    // 		return $this->player1;
-    // 	}else{
-    // 		return $this->player2;
-    // 	}
-    // }
+
 }

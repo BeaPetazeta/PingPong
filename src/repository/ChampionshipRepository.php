@@ -58,8 +58,5 @@ class ChampionshipRepository{
             $players[] = new Player($row['name']);
         }
         return $players;
-        //var_dump($result);
     }
-
-
 }

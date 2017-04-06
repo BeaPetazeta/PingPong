@@ -40,5 +40,3 @@ class ChampionshipController
         $view->render('show.php', ['championship' => $championship, 'players' => $championship->getPlayers()]);
     }
 }
-
-

@@ -2,7 +2,6 @@
 
 namespace LeanProgrammers\Repository;
 
-use LeanProgrammers\Model\Championship;
 use LeanProgrammers\Model\Player;
 use LeanProgrammers\Framework\Database;
 use LeanProgrammers\Repository\PlayerRepository;
@@ -15,7 +14,6 @@ class ChampionshipRepository
         $stmt = $pdo->prepare('SELECT name FROM championship');
         $stmt->execute();
         $result = $stmt->fetchAll();
-
         return $result;
     }
   

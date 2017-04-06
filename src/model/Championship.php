@@ -1,11 +1,11 @@
 <?php 
 
 namespace LeanProgrammers\Model;
+
 use LeanProgrammers\Model\Player;
 
 class Championship
 {
-
     /*Variables*/
     private $name; //Nombre del campeonato
 
@@ -26,7 +26,7 @@ class Championship
         	$playersList[$i] = new Player($players[$i]);
         }
     }
-  
+
     /*Esta funcion creará los partidos */
     function matchMate(){
         for($i=1; $i<count($this->players); $i+=2){
@@ -39,15 +39,17 @@ class Championship
         //hacemos un bucle para recorrer el vector de partidos y los muestra.
        return $this->match;
     }
-  
+
     /* Esta funcion realiza los partidos y nos devuelve un ganador de partido*/
     function tournament(){
         for($i; $i<count($this->points);$i+=2){
             $match1 = new Match($this->players[$i],$this->players[$i+1]);
             $winner = $match1->setMatch($this->points[$i],$this->points[$i+1]);
+
             echo "<br>";
             echo "el ganador del partido es " .$winner;
             echo "<br>";
+
             $roundWinners[]=$winner;
             $i++;
         }
@@ -64,7 +66,7 @@ class Championship
     {
     	$this->name = $name;
     }
-  
+
     //recuperamos el nombre del campeonato almacenado
     function getName()
     {
@@ -80,5 +82,4 @@ class Championship
         $player = new Player($name);
         $this->playerList[] = $player;
     }
-
 }

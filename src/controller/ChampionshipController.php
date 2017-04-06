@@ -8,7 +8,6 @@ use LeanProgrammers\Repository\PlayerRepository;
 
 class ChampionshipController
 {
-
     public function index()
     {
         $championships = ChampionshipRepository::getAll();
@@ -19,10 +18,8 @@ class ChampionshipController
 
     }
 
-
      public function show($id)
     {
-
     	//se hace una llamada al championshiprepository, para que nos devuelva el nombre del campeonato que le pasamos nosotros por Id.
 
     	$championship = ChampionshipRepository::getById($id) ;

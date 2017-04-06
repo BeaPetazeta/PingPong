@@ -11,11 +11,13 @@ Lista de partidos:
 		<li><?= $match ?></li>
 	<?php endforeach ?>
 </ul>
+
 <!-- Si no hay jugadores nos muestra un mensaje de información -->
 Lista de jugadores:
 <?php if(count($players)<1):
 	echo "No hay jugadores inscritos en este campeonato";
 else: ?>
+
 <ul>
 	<?php
 	foreach($players as $player): ?>
@@ -23,6 +25,3 @@ else: ?>
 	<?php endforeach ?>
 </ul>
 <?php endif ?>
-
-
-

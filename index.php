@@ -6,6 +6,7 @@ use LeanProgrammers\Framework\Database;
 use LeanProgrammers\Framework\Request;
 use LeanProgrammers\Controller\PlayerController;
 use LeanProgrammers\Controller\MatchController;
+use LeanProgrammers\Controller\ChampionshipController;
 
 
 $request = new Request();

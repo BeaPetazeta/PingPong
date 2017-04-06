@@ -1,12 +1,8 @@
 <?php
-//namespace Champ\Model;
 namespace LeanProgrammers\Model;
 
-class Match
-{
-	/*Se declaran dos variables que almacenarán el nombre de
-	los jugadores del partido*/
-	public $playerOne;
+class Match{
+	public $playerOne;//nombre del jugador 1 del partido
 	public $playerTwo;
 	/*Se declara la variable de tipo fecha donde se almacenará la fecha del partido*/
 	public $dateMatch;
@@ -15,9 +11,9 @@ class Match
 	public $pointsPlayerTwo;
 
 	/*En el constructor pedimos dos nombre*/
-	function __construct( $namePlayerOne, $namePlayerTwo ){
-       $this->playerOne = $namePlayerOne;
-       $this->playerTwo = $namePlayerTwo;
+	function __construct( $playerOne, $playerTwo ){
+       $this->playerOne = $playerOne;
+       $this->playerTwo = $playerTwo;
     }
 
     /*Función setDate, para introducirle fecha a el partido*/

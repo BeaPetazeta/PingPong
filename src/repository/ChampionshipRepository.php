@@ -16,21 +16,17 @@ class ChampionshipRepository
         $result = $stmt->fetchAll();
         return $result;
     }
-  
     //devuelve el campeonato introduciendole un id
     static public function getById($id){
-
 		$pdo = Database::getInstance();
         $stmt = $pdo->prepare("SELECT championship.name from championship
                             WHERE id=:id");
         $stmt->execute([':id'=>$id]);
         $result = $stmt->fetch(); //solo fetch porque queremos un solo campeonato
-
         //Si no obtiene ninguna columna nos devuelve un nulo, para usarlo en el error de la vista.
         if (false == $result){
             return null;
         }
-
         $championship = new Championship($result["name"]);
 
         //Obtenemos de la base de datos los datos de usuario para un campeonato concreto.
@@ -41,18 +37,13 @@ class ChampionshipRepository
             WHERE championship=:id");
         $stmt->execute([':id'=>$id]);
         $result = $stmt->fetchAll();
-
         //le pasamos los datos a la clase player, con los datos que obtenemos de la base de datos.
         foreach ($result as $row) {
-            $player = new Player($row['name']);
-            $player->setId($row['id']);
-            $player->setEmail($row['email']);
-            $player->setNick($row['nick']);
+            $player = PlayerRepository::createFromRow($row);
             $championship->addplayer($player);
         }
         return $championship;
     }
-  
     /* Esta funcion hace la consulta a la bbdd donde nos devolverá, a partir de un id,(id de championship) la lista de jugadores de un campeonato*/
      static public function getPlayersById($id){
 
@@ -63,11 +54,11 @@ class ChampionshipRepository
                             WHERE championship_has_users.championship=:id");
         $stmt->execute([':id'=>$id]);
         $result = $stmt->fetchall();
-
         foreach($result as $row){
             $players[] = new Player($row['name']);
         }
-
         return $players;
+
     }
 }
+

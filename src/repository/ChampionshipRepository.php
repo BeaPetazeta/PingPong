@@ -2,13 +2,13 @@
 
 namespace LeanProgrammers\Repository;
 
-use LeanProgrammers\Model\Championship;
 use LeanProgrammers\Model\Player;
 use LeanProgrammers\Framework\Database;
 use LeanProgrammers\Repository\PlayerRepository;
 
-class ChampionshipRepository{
-//devuelve lista de campeonatos
+class ChampionshipRepository
+{
+    //devuelve lista de campeonatos
     static public function getAll(){
     	$pdo = Database::getInstance();
         $stmt = $pdo->prepare('SELECT name FROM championship');
@@ -16,8 +16,7 @@ class ChampionshipRepository{
         $result = $stmt->fetchAll();
         return $result;
     }
-
-//devuelve el campeonato introduciendole un id
+    //devuelve el campeonato introduciendole un id
     static public function getById($id){
 		$pdo = Database::getInstance();
         $stmt = $pdo->prepare("SELECT championship.name from championship
@@ -29,6 +28,7 @@ class ChampionshipRepository{
             return null;
         }
         $championship = new Championship($result["name"]);
+
         //Obtenemos de la base de datos los datos de usuario para un campeonato concreto.
         $stmt = $pdo->prepare("
             SELECT users.id,users.name,users.nick,users.email
@@ -44,9 +44,9 @@ class ChampionshipRepository{
         }
         return $championship;
     }
-
     /* Esta funcion hace la consulta a la bbdd donde nos devolverá, a partir de un id,(id de championship) la lista de jugadores de un campeonato*/
      static public function getPlayersById($id){
+
         $pdo = Database::getInstance();
         $stmt = $pdo->prepare("SELECT users.name FROM users
                             INNER JOIN championship_has_users
@@ -58,8 +58,7 @@ class ChampionshipRepository{
             $players[] = new Player($row['name']);
         }
         return $players;
-        //var_dump($result);
+
     }
-
-
 }
+

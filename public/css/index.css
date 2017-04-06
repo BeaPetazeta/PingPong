@@ -1,0 +1,68 @@
+/* hoja de stylos de index.php */
+
+html{margin:0px 0px 0px 0px;
+     padding:0px 0px 0px 0px;}
+body{margin:0px 0px 0px 0px;}
+
+.content{
+    
+    width: 100%;
+    min-height:400px;
+    height:600px;
+}
+
+#companyInstruccions{
+    background: #f0f0f0;
+    width: 50%;
+    float: left;
+    text-align: right;
+    padding-right:25px;  
+    padding-top:5%;
+}
+
+#userInstruccions{
+    background: #e3e3e3;
+    text-align: left;
+    padding-left:25px; 
+    padding-top:5%; 
+    width: 50%;
+    float: right;
+}
+
+#image_title1{
+    background: #ffffff;
+    width: 50%; 
+    float: left;
+    text-align: right;
+    padding-right:25px;  
+    padding:50px 10px 10px 10px; 
+    float: left;
+    
+}
+
+#text_title1{
+    background: #ffffff;
+    text-align: left;
+    padding-left:25px; 
+    padding-top:10%; 
+    width: 50%;
+    float: right;
+    padding-bottom:10px;
+}
+
+
+#text_title2{
+    background: #f8f8f8;
+     float: left;
+    width: 50%;
+    padding-left:25px; 
+    padding-top:10%; 
+}
+
+#image_title2{
+    background:#f8f8f8;
+  float: right;
+   width: 50%;
+   padding-left:25px; 
+    padding-top:8%; 
+}

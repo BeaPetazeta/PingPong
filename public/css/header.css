@@ -1,0 +1,36 @@
+html{margin: 0px 0px 0px 0px;}
+body{margin: 0px 0px 0px 0px;}
+
+header{
+    border-bottom:solid 3px #423f40;
+    text-align: center;
+    padding-bottom: 4px;
+    
+
+}
+#imageLogo{
+    position: relative;
+margin-top: 5px;
+}
+
+#socialMedia{
+    margin-top: 5px;
+border: solid 1px;
+width: 100%;
+}
+
+
+.socialMediaLogo{
+    margin-top: 5px;
+position: relative;
+float: left;
+text-align: left;
+}
+
+
+.loginHeader{
+    margin-top: 5px;
+position: relative;
+float: right;
+text-align: right;
+}

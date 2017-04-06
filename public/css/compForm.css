@@ -1,0 +1,19 @@
+label{
+    display: inline-block;
+    width: 12%;
+    font-family: verdana;
+    color: green;
+}
+body{
+    margin: 20px;
+}
+input{
+    width: 15%;
+}
+h2{
+    color: blue;
+    font-family: verdana;
+}
+#button{
+    width: 5%;
+}

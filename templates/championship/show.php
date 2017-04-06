@@ -4,25 +4,21 @@
 	<?= $championship->getName(); ?>
 </h1>
 
-<h2>Lista de partidos:</h2>
+Lista de partidos:
 <ul>
 	<?php
-	foreach($championship->matchMate() as $match): ?>
+	foreach($championship->showMatches() as $match): ?>
 		<li><?= $match ?></li>
 	<?php endforeach ?>
-
 </ul>
 
-<!-- Si no hay jugadores nos muestra un mensaje de información -->
 Lista de jugadores:
-<?php if(count($players)<1):
-	echo "No hay jugadores inscritos en este campeonato";
-else: ?>
-
 <ul>
 	<?php
 	foreach($players as $player): ?>
 		<li><?= $player->getName(); ?></li>
 	<?php endforeach ?>
 </ul>
-<?php endif ?>
+
+
+	

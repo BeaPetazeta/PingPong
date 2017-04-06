@@ -35,7 +35,7 @@ class Championship
     }
   
     //Esta función muestra los partidos
-    function showMatches(){
+    function getMatches(){
         //hacemos un bucle para recorrer el vector de partidos y los muestra.
        return $this->match;
     }

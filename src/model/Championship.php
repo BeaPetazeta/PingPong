@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace LeanProgrammers\Model;
 use LeanProgrammers\Model\Player;
 
@@ -11,7 +11,7 @@ class Championship{
     public $playerList = array(); //Array de objetos Player
     public $points = array(); //Array de puntos
     public $roundWinners = array();
-    public $match = array();
+    public $match = array();//Array de partidos
 
 
 	//Cuando creamos un objeto de esta clase, el constructor espera una variable necesaria que es name. Podemos crear un torneo sin haber dado una lista de jugadores antes, por eso pasamos array vacio
@@ -21,15 +21,18 @@ class Championship{
         $this->players = $playerList;
         $this->points = $pointsList;
 
-        for ($i=0; $i < count($this->players) ; $i++) { 
+        for ($i=0; $i < count($this->players) ; $i++) {
         	$playersList[$i] = new Player($players[$i]);
         }
     }
+
     /*Esta funcion creará los partidos */
     function matchMate(){
         for($i=1; $i<count($this->players); $i+=2){
             $this->match[]= new Match ($this->players[$i],$this->players[$i+1]); //se crea un vector con los partidos
         }
+        var_dump($this->match);
+        //return $this->match;
     }
     //Esta función muestra los partidos
     function showMatches(){
@@ -61,22 +64,21 @@ class Championship{
     {
     	$this->name = $name;
     }
+
     //recuperamos el nombre del campeonato almacenado
     function getName()
     {
     	return $this->name;
     }
-    function getPlayers(){
-        return $this->playerList;        
 
+    function getPlayers(){
+        return $this->playerList;
     }
 
     public function addPlayer($name){
         //var_dump($name);
         $player = new Player($name);
         $this->playerList[] = $player;
-
-
     }
 
 }

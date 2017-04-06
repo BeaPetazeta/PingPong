@@ -4,12 +4,13 @@
 	<?= $championship->getName(); ?>
 </h1>
 
-Lista de partidos:
+<h2>Lista de partidos:</h2>
 <ul>
 	<?php
-	foreach($championship->showMatches() as $match): ?>
+	foreach($championship->matchMate() as $match): ?>
 		<li><?= $match ?></li>
 	<?php endforeach ?>
+
 </ul>
 <!-- Si no hay jugadores nos muestra un mensaje de información -->
 Lista de jugadores:

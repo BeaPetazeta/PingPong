@@ -2,9 +2,9 @@
 return [
     'db' => [
         'host' => 'localhost',
-        'dbname' => 'example',
+        'dbname' => 'proyectophp',
         'charset' => 'utf8',
         'user' => 'root',
-        'password' => '123'
+        'password' => ''
     ]
 ];

@@ -8,7 +8,7 @@ use LeanProgrammers\Repository\PlayerRepository;
 
 class ChampionshipController
 {
-	
+
     public function index()
     {
         $championships = ChampionshipRepository::getAll();
@@ -19,7 +19,7 @@ class ChampionshipController
 
     }
 
-    
+
      public function show($id)
     {
 
@@ -27,20 +27,26 @@ class ChampionshipController
 
     	$championship = ChampionshipRepository::getById($id) ;
 
+        //Comprueba que exista el campeonato, sino muestra un mensaje de error (se podria cambiar por una pagina)
+        if (null == $championship){
+            echo "Campeonato no encontrado";
+            die;
+        }
+
         //se hace una llamada al championshiprepository, para que nos devuelva una lista de jugadores que pertenecen a un campeonato determinado que lo pasaremos por id.
 
        // $players = ChampionshipRepository::getPlayersChampionshipById($id) ;
-        
+
 
        // mostrar lista partidas de un campeonato.
 
         $view = new View('championship');
 
         $view->render('show.php', ['championship' => $championship, 'players' => $championship->getPlayers()]);
- 
+
     }
- 
-    
+
+
 }
 
 //AQUI HAY QUE HACER LA CONSULTA A LA BBDD

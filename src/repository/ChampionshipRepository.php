@@ -3,8 +3,9 @@
 namespace LeanProgrammers\Repository;
 
 use LeanProgrammers\Model\Championship;
+use LeanProgrammers\Model\Player;
 use LeanProgrammers\Framework\Database;
-use LeanProgrammers\Repository\playerrepository;
+use LeanProgrammers\Repository\PlayerRepository;
 
 class ChampionshipRepository{
 //devuelve lista de campeonatos
@@ -13,38 +14,55 @@ class ChampionshipRepository{
         $stmt = $pdo->prepare('SELECT name FROM championship');
         $stmt->execute();
         $result = $stmt->fetchAll();
-       
+
         return $result;
     }
 //devuelve el campeonato introduciendole un id
     static public function getById($id){
 
 		$pdo = Database::getInstance();
-        $stmt = $pdo->prepare("SELECT championship.name AS champ, users.name FROM users 
-                            INNER JOIN championship_has_users 
-                            ON users.id=championship_has_users.user
-                            INNER JOIN championship
-                            ON championship_has_users.championship=championship.id
-                            WHERE championship_has_users.championship=:id");
+        $stmt = $pdo->prepare("SELECT championship.name from championship
+                            WHERE id=:id");
         $stmt->execute([':id'=>$id]);
-        $result = $stmt->fetchAll(); //solo fetch porque queremos un solo campeonato
-        
-        $championship = new Championship($result[0]["champ"]);
-        //var_dump($championship->getName());
-        //var_dump($result[0]['name']);
-        foreach ($result as $row) {
-            $championship->addplayer($row['name']);
+        $result = $stmt->fetch(); //solo fetch porque queremos un solo campeonato
+
+        //Si no obtiene ninguna columna nos devuelve un nulo, para usarlo en el error de la vista.
+        if (false == $result){
+            return null;
         }
-        
+
+        $championship = new Championship($result["name"]);
+
+
+        //Obtenemos de la base de datos los datos de usuario para un campeonato concreto.
+        $stmt = $pdo->prepare("
+            SELECT users.id,users.name,users.nick,users.email
+            FROM championship_has_users
+            INNER JOIN users ON users.id=championship_has_users.user
+            WHERE championship=:id");
+        $stmt->execute([':id'=>$id]);
+        $result = $stmt->fetchAll();
+
+        //le pasamos los datos a la clase player, con los datos que obtenemos de la base de datos.
+        foreach ($result as $row) {
+            $player = new Player($row['name']);
+            $player->setId($row['id']);
+            $player->setEmail($row['email']);
+            $player->setNick($row['nick']);
+            $championship->addplayer($player);
+        }
         return $championship;
+
+
     }
     /* Esta funcion hace la consulta a la bbdd donde nos devolverá, a partir de un id,(id de championship) la lista de jugadores de un campeonato*/
      static public function getPlayersById($id){
 
+
         $pdo = Database::getInstance();
-        $stmt = $pdo->prepare("SELECT users.name FROM users 
-                            INNER JOIN championship_has_users 
-                            ON users.id=championship_has_users.user 
+        $stmt = $pdo->prepare("SELECT users.name FROM users
+                            INNER JOIN championship_has_users
+                            ON users.id=championship_has_users.user
                             WHERE championship_has_users.championship=:id");
         $stmt->execute([':id'=>$id]);
         $result = $stmt->fetchall();
@@ -53,12 +71,13 @@ class ChampionshipRepository{
             $players[] = new Player($row['name']);
         }
 
-        return $players; 
-        //var_dump($result);
-        
-             
+        return $players;
 
-        
+        //var_dump($result);
+
+
+
+
     }
 
 }

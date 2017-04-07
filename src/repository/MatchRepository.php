@@ -53,7 +53,9 @@ class MatchRepository{
         $player2 = PlayerRepository::getById($row['player2']);
         $match = new Match($player1,$player2);
         $match->setPointsPlayer1($row['pointsP1']);
-        $match->setPointsPlayer2($row['pointsP2']);
+        $match->setPointsPlayer2($row['pointsP2']);        
+        $round = RoundRepository::getById($row['round_id']);
+        $match->setRound($round);
         return $match;
     }
 }

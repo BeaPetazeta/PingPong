@@ -4,6 +4,7 @@ namespace LeanProgrammers\Controller;
 
 use LeanProgrammers\Framework\View;
 use LeanProgrammers\Repository\MatchRepository;
+use LeanProgrammers\Repository\RoundRepository;
 
 class MatchController{
 
@@ -17,8 +18,18 @@ class MatchController{
     }
 
     public function show($id){
-
         $match = MatchRepository::getById($id);
+        $round = new Round();
+        if (!empty($_POST))  {
+            $match->setPointsPlayer1($_POST['pointsPlayer1']);
+            $match->setPointsPlayer2($_POST['pointsPlayer2']);
+            
+            $round = $match->getRound();
+            if(true == $round->checkPointsMatches()){
+                //Crear nueva ronda
+            }
+        }
+       
 
         $view = new View('match');
 

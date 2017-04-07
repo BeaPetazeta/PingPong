@@ -9,6 +9,7 @@ class Match{
 	/*Se declaran dos variables donde se almacenarán los puntos de cada jugador*/
 	private $pointsPlayer1;
 	private $pointsPlayer2;
+    private $round;
 
 	/*En el constructor pedimos dos nombre*/
 	function __construct( $player1, $player2 ){
@@ -66,13 +67,16 @@ class Match{
             return $this->player1;
         }elseif($this->pointsPlayer1 < $this->pointsPlayer2){
             return $this->player2;
+        }else {
+            return "empate";
         }
     }
 
+    public function setRound($round){
+        $this->round = $round;
+    }
 
-
-
-
-
-
+    public function getRound(){
+        return $this->round;
+    }
 }

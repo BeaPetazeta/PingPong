@@ -11,8 +11,9 @@
 	foreach($firstRound->getMatches() as $match): ?>
 		<li><?= $match ?></li>
 	<?php endforeach ?>
-
 </ul>
+
+
 <!-- Si no hay jugadores nos muestra un mensaje de información -->
 Lista de jugadores:
 <?php if(count($players)<1):

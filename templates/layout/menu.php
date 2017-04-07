@@ -1,11 +1,11 @@
 <head>
 
     <link rel="icon" href="https://getbootstrap.com/favicon.ico">
-    <link href="public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="public/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="public/css/navbar.css" rel="stylesheet">
-    <script src="public/js/ie-emulation-modes-warning.js"></script>
-    <link rel="stylesheet" href="public/css/menu.css">
+    <link href="/Proyect/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Proyect/public/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="/Proyect/public/css/navbar.css" rel="stylesheet">
+    <script src="/Proyect/public/js/ie-emulation-modes-warning.js"></script>
+    <link rel="stylesheet" href="/Proyect/public/css/menu.css">
   </head>
 
  
@@ -47,8 +47,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="public/js/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="public/js/jquery.min.js"><\/script>')</script>
-    <script src="public/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/Proyect/public/js/jquery.min.js"><\/script>')</script>
+    <script src="/Proyect/public/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="public/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Proyect/public/js/ie10-viewport-bug-workaround.js"></script>
   

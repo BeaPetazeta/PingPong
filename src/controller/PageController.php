@@ -20,4 +20,35 @@ class PageController
         $pageView->render('contact.php');
 
     }
+
+
+    public function error404()
+    {
+        
+        $pageView = new \LeanProgrammers\Framework\View('page');
+
+        $pageView->render('404error.php');
+
+    }
+
+
+    public function userLogin()
+    {
+        
+        $pageView = new \LeanProgrammers\Framework\View('page');
+
+        $pageView->render('loginUser.php');
+
+    }
+
+
+    public function compLogin()
+    {
+        
+        $pageView = new \LeanProgrammers\Framework\View('page');
+
+        $pageView->render('compLogin.php');
+
+    }
+
 }

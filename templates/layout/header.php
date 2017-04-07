@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="public/css/header.css">
-    <link rel="stylesheet" href="public/css/footer.css">
+    <link rel="stylesheet" href="/Proyect/public/css/header.css">
+    <link rel="stylesheet" href="/Proyect/public/css/footer.css">
 </head>
 <body>
     
 <header>
-    <div id="socialMedia">
+    <div>
+    <ul id="socialMedia">
 <!--left-->
-<img class="socialMediaLogo" SRC="public/images/icono-fb-header.png" ALT="Logo Facebook">
-<img class="socialMediaLogo" SRC="public/images/icono-link-header.png" ALT="Logo Linkedinn">
-<img class="socialMediaLogo" SRC="public/images/icono-twt-header.png" ALT="Logo Twitter">
-<img class="socialMediaLogo" SRC="public/images/icono-youtube-header.png" ALT="Logo youtube">
+        <img class="socialMediaLogo" SRC="/Proyect/public/images/icono-fb-header.png" ALT="Logo Facebook">
+        <img class="socialMediaLogo" SRC="/Proyect/public/images/icono-link-header.png" ALT="Logo Linkedinn">
+        <img class="socialMediaLogo" SRC="/Proyect/public/images/icono-twt-header.png" ALT="Logo Twitter">
+        <img class="socialMediaLogo" SRC="/Proyect/public/images/icono-youtube-header.png" ALT="Logo youtube">
+    </ul>
 <!--Right-->
-
-<img class="loginHeader" SRC="public/images/icono_login.png" ALT="Logo login">
-<a class="loginHeader" href="">Login Empresa</a>
-<a class="loginHeader" href="">Login Jugador</a>
-
-    </div> 
-     <img id="imageLogo" SRC="public/images/logo.png" ALT="Logo PINGPONG_atwork">
+    <ul class="divHeader">
+        <img class="loginHeader" SRC="/Proyect/public/images/icono_login.png" ALT="Logo login">
+        <li class="loginHeader"> <a href="">Login Empresa</a></li>
+        <li class="loginHeader"> <a  href="">Login Jugador</a></li>
+    </ul>
+    </div>
+<img id="imageLogo" SRC="/Proyect/public/images/logo.png" ALT="Logo PINGPONG_atwork">
 </header>

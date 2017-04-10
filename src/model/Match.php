@@ -25,7 +25,11 @@ class Match{
     /*Función setDate, para introducirle fecha a el partido*/
     public function setDate( $date )
     {
+
     	$this->dateMatch = $date;
+    }
+    public function getDate(){
+        return $this->dateMatch;
     }
 
     /*Función que devuelve un array con la lista d elos nombres*/
@@ -86,6 +90,9 @@ class Match{
             return "empate";
         }
     }
+    public function getResult(){
+        return $this->pointsPlayer1 . " - " . $this->pointsPlayer2;
+    }
 
     public function setRound($round){
         $this->round = $round;
@@ -94,5 +101,6 @@ class Match{
     public function getRound(){
         return $this->round;
     }
+
 
 }

@@ -11,15 +11,15 @@ class MatchRepository{
         $pdo = Database::getInstance();
         $stmt = $pdo->prepare(
             'SELECT (
-                SELECT USERS.name FROM ROUND
+                SELECT USERS.name FROM GAME
                 INNER JOIN USERS
-                WHERE ROUND.player1 = USERS.id
-                AND ROUND.id = 1
+                WHERE GAME.player1 = USERS.id
+                AND GAME.id = 1
             ) AS player1, (
-                SELECT USERS.name FROM ROUND
+                SELECT USERS.name FROM GAME
                 INNER JOIN USERS
-                WHERE ROUND.player2 = USERS.id
-                AND ROUND.id = 1
+                WHERE GAME.player2 = USERS.id
+                AND GAME.id = 1
             ) AS player2'
             );
         $stmt->execute();
@@ -54,11 +54,31 @@ class MatchRepository{
         $player1 = PlayerRepository::getById($row['player1']);
         $player2 = PlayerRepository::getById($row['player2']);
         $match = new Match($player1,$player2);
+        $match->setDate($row['date']);
         $match->setPointsPlayer1($row['pointsP1']);
-        $match->setPointsPlayer2($row['pointsP2']);        
+        $match->setPointsPlayer2($row['pointsP2']);
         $round = RoundRepository::getById($row['round_id']);
         $match->setRound($round);
         return $match;
+    }
+    static public function getAllByPlayerId($playerId){
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare('
+            SELECT * FROM game
+            INNER JOIN USERS AS P1
+            ON GAME.player1 = P1.id
+            INNER JOIN USERS AS P2
+            ON GAME.player2 = P2.id
+            INNER JOIN round
+            ON game.round_id=round.id
+            WHERE player1=:id OR player2=:id
+            ORDER BY date DESC');
+        $stmt->execute([':id'=>$playerId]);
+        $result = $stmt->fetchAll();
+        foreach($result as $row){
+            $matches[] = self::createFromRow($row);
+        }
+        return $matches;
     }
 
 }

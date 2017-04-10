@@ -30,7 +30,6 @@ class PlayerRepository
             $player = self::createFromRow($result);
             return $player;
         }
-
     }
 
     static public function getById($id){
@@ -43,9 +42,15 @@ class PlayerRepository
     }
     static private function createFromRow($row){
         $player = new Player($row['name']);
+        $player->setId($row['id']);
         $player->setNick($row['nick']);
         $player->setMail($row['email']);
         return $player;
     }
-
+    static public function register($name, $nick, $email, $password){
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare('INSERT INTO users (id, name, nick, email, password) VALUES (NULL, :name, :nick, :email, :password);');
+        $stmt->execute([':name'=>$name, ':nick'=>$nick, ':email'=>$email, ':password'=>$password]);
+        return PlayerRepository::getById($pdo->lastInsertId());
+    }
 }

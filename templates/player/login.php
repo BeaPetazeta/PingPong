@@ -12,7 +12,7 @@
             <label>Contraseña:</label><br>
             <input type="password" name="password" placeholder="Contraseña" required><br><br>
 
-            <input type="submit" name="sent" value="Enviar" id="button">
+            <input type="submit" name="login" value="Enviar" id="button">
 
         </form>
 
@@ -37,7 +37,7 @@
             <label>Confirmar Contraseña:</label><br>
             <input type="password" name="repassword" placeholder="Confirme su contraseña" required><br><br>
                 
-            <input type="submit" name="sent" value="Enviar" id="button">
+            <input type="submit" name="register" value="Enviar" id="button">
 
         </form>
     </div>

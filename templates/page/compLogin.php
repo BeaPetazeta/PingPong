@@ -14,7 +14,7 @@
         <input type="email" name="mail" placeholder="correo electrónico" required><br><br>
         <label>Password</label>
         <input type="password" name="pass" placeholder="introduzca contraseña" requires><br><br>
-        <input type="submit" name="" value="Enviar" id="button">
+        <input type="submit" name="register" value="Enviar" id="button">
     </form>
 </body>
 </html>

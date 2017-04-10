@@ -13,14 +13,14 @@ class Database
 
     private static function connect(): PDO
     {
-/*        $dbConfig = Config::getInstance()->get('db');
+        $dbConfig = Config::getInstance()->get('db');
         return new PDO(
         'mysql:host='.$dbConfig['host'].
         ';dbname='.$dbConfig['dbname'].
         ';charset='.$dbConfig['charset'],
         $dbConfig['user'],
         $dbConfig['password']
-        );*/
+        );
     }
 
     public static function getInstance(){

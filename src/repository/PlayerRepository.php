@@ -19,4 +19,17 @@ class PlayerRepository
 
         return $players;
     }
+
+    static public function getById($id){
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare('SELECT * FROM users WHERE id=:id');
+        $stmt->execute([':id'=>$id]);
+        $result = $stmt->fetch();
+        $player = self::createFromRow($result);
+        return $player;
+    }
+    static private function createFromRow($row){
+        $player = new Player($row['name']);
+        return $player;
+    }
 }

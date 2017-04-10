@@ -7,6 +7,7 @@ use LeanProgrammers\Model\Championship;
 class Round
 {
     private $matches = array();//Array de partidos
+    private $championship;
 
     public function getMatches(){
         return $this->matches;
@@ -23,6 +24,12 @@ class Round
     			return false;
     		}
     	}
+    }
+    public function setChampionship($championship){
+        $this->championship = $championship;
+    }
+    public function getChampionship(){
+        return $this->championship;
     }
 }
 

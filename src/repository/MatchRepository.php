@@ -75,6 +75,7 @@ class MatchRepository{
             ORDER BY date DESC');
         $stmt->execute([':id'=>$playerId]);
         $result = $stmt->fetchAll();
+        $matches = [];
         foreach($result as $row){
             $matches[] = self::createFromRow($row);
         }

@@ -36,9 +36,14 @@
         </div>
         <div class="col-xs-6 col-md-6 divLoginHeader">
             <ul>
-                <li><img src="/proyectoPingPong/public/img/icono_login.png" alt="Logo login"></li>
-                <li><a href="">Login Empresa </a></li>                |
-                <li><a href="">Login Jugador</a></li>
+                <?php if(isset($_SESSION['username']) ):?>
+                    <li>Hola <?= $_SESSION['username']?></li> |
+                    <li><a href="/proyectoPingPong/player/logout">Cerrar sesión </a></li> 
+                <?php else:?>   
+                    <li><img src="/proyectoPingPong/public/img/icono_login.png" alt="Logo login"></li>
+                    <li><a href="">Login Empresa </a></li>                |
+                    <li><a href="/proyectoPingPong/player/login">Login Jugador</a></li>
+                <?php endif ?>    
             </ul>
         </div>
     </div>

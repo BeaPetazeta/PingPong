@@ -73,3 +73,11 @@ body{
     padding-top: 25px;
     padding-bottom: 25px;
 }
+/*POR REVISAR, a partir de aqui es css de miguel*/
+input{
+    border-radius: .1em;
+    -moz-border-radius: .1em;
+    -webkit-border-radius: .1em;
+    border: 1px solid #555555;
+    padding: 0 10px;
+}

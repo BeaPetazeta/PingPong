@@ -3,6 +3,7 @@ namespace LeanProgrammers\Model;
 
 class Player
 {
+    private $id = null;
     private $name = '';
     private $nick = '';
 
@@ -14,6 +15,9 @@ class Player
 
     public function __toString(){
     	return $this->name;
+    }
+    public function getId(){
+        return $this->id;
     }
     public function getName(){
         return $this->name;

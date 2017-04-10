@@ -8,6 +8,7 @@ use LeanProgrammers\Controller\PlayerController;
 use LeanProgrammers\Controller\MatchController;
 use LeanProgrammers\Controller\ChampionshipController;
 
+session_start();
 
 $request = new Request();
 

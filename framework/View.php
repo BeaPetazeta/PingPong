@@ -17,8 +17,28 @@ class View{
         $templateFile = $this->templatePath . $template;
         extract($data);
 
-        include 'templates/layout/header.php';
-        include $templateFile;
-        include 'templates/layout/footer.php';
+      switch ($template) {
+
+            case '404error.php':
+                include 'templates/layout/header.php'; 
+                include $templateFile;
+                include 'templates/layout/footer.php';
+                break;
+            case 'contact.php':
+                include 'templates/layout/header.php';
+                include 'templates/layout/menu.php'; 
+                include $templateFile;
+                include 'templates/layout/footer.php';
+                break;
+            
+            default:
+                include 'templates/layout/header.php';
+                include 'templates/layout/menu.php';
+                include 'templates/layout/banner.php'; 
+                include $templateFile;
+                include 'templates/layout/footer.php';
+                break;
+        }
+
     }
 }

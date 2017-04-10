@@ -1,0 +1,33 @@
+footer{
+    border: solid 1px;
+    width: 100%;
+}
+
+
+#links_footer{
+    background: grey;
+    border: solid 1px;
+    float: left;
+    width: 50%;
+
+}
+#image_footer{
+    background: grey;
+    border: solid 1px;
+    float:right;
+    width: 25%; 
+}
+#more_footer{
+    background: grey;
+    float: right;
+    border: solid 1px;
+    width: 25%;
+}
+
+
+#copyrigth{
+width: 100%;
+height: 25px;
+border: solid 1px;
+margin-top: 72px;
+}

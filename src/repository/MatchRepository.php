@@ -37,25 +37,6 @@ class MatchRepository{
         $matches = new Match($players1,$players2);
         return $matches;
     }
-    //creamos el partido pasandole una id
-    static public function getById($id){
-        $pdo = Database::getInstance();
-        $stmt = $pdo->prepare('SELECT * FROM round WHERE id=:id');
-        $stmt->execute([':id'=>$id]);
-        $result = $stmt->fetch();
-        $match = self::createFromRow($result);
-        return $match;
-
-    }
-    //creamos una función para pasar los valores y tenerla generalizada
-    static private function createFromRow($row){
-        $player1 = PlayerRepository::getById($row['player1']);
-        $player2 = PlayerRepository::getById($row['player2']);
-        $match = new Match($player1,$player2);
-        $match->setPointsPlayer1($row['pointsP1']);
-        $match->setPointsPlayer2($row['pointsP2']);
-        return $match;
-    }
 }
 
 ?>

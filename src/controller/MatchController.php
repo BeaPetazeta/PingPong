@@ -16,14 +16,5 @@ class MatchController{
         $view->render('index.php',['matches'=>$matches]);
     }
 
-    public function show($id){
-
-        $match = MatchRepository::getById($id);
-
-        $view = new View('match');
-
-        $view->render('show.php',['match'=>$match]);
-    }
-
 
 }

@@ -15,4 +15,10 @@ class PlayerController
         $view->render('index.php', ['players' =>$players]);
 
     }
+    public function show($id){
+    	$player=PlayerRepository::getById($id);
+
+    	$view = new View('player');
+    	$view->render('show.php',['player'=>$player]);
+    }
 }

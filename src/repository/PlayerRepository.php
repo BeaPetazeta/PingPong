@@ -8,13 +8,13 @@ class PlayerRepository
 {
     static public function getAll(){
         $pdo = Database::getInstance();
-        $stmt = $pdo->prepare('SELECT name FROM users');
+        $stmt = $pdo->prepare('SELECT * FROM users');
         $stmt->execute();
         $result = $stmt->fetchAll();
         $players = [];
 
         foreach($result as $row){
-            $players[] = new Player($row['name']);
+            $players[] = self::createFromRow($row);
         }
 
         return $players;
@@ -30,6 +30,8 @@ class PlayerRepository
     }
     static private function createFromRow($row){
         $player = new Player($row['name']);
+        $player->setNick($row['nick']);
+        $player->setMail($row['email']);
         return $player;
     }
 }

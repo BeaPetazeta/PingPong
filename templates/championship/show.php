@@ -12,11 +12,8 @@ Lista de partidos:
 	<?php endforeach ?>
 </ul>
 
-<<<<<<< HEAD
-=======
-
 <!-- Si no hay jugadores nos muestra un mensaje de información -->
->>>>>>> d23b294c42743efd5f0350c5206c77054960f324
+
 Lista de jugadores:
 <ul>
 	<?php

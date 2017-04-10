@@ -1,0 +1,75 @@
+body{
+    
+}
+.pdT-15px {
+    padding-top: 15px;
+}
+.socialIcons i{
+    padding-right: 3px;
+}
+.divLoginHeader ul li{
+    list-style-type: none;
+    display: inline;
+    list-style: none;
+}
+.banner-img {
+    height: 442px;
+    background-image: url("/proyectoPingPong/public/img/slider_prov1.jpg"); 
+}
+
+.banner {
+    text-align: center;
+    height: 130px;
+    max-width: 100%;
+    background: url('/proyectoPingPong/public/img/logo.png');
+    background-repeat: no-repeat;
+}
+
+.infopage{    
+    height: 250px;    
+}
+
+.infocompany{
+    background-color: #B6B6B6;
+    padding-top: 15px;
+    padding-bottom: 50px;
+}
+.infoplayer{
+    background-color: #909090;
+    padding-top: 15px;
+    padding-bottom: 50px;    
+}
+.info-1{
+    height: 300px;
+    
+}
+.info-2{
+    background-color: #BDBDB9;
+    padding-bottom: 25px;
+}
+.size-40{
+    width: 50%;
+}
+.size-32{
+    width: 32%;
+    padding-top: 15px;
+}
+.footer-class {
+    padding-top: 45px;
+    padding-bottom: 25px;
+    height: 200px;
+    background-color: #C8E827;
+}
+.footer-2{    
+    background-color: #CDCD1B;
+}
+.footer-1 ul li{
+    list-style-type: none;
+    list-style: none;  
+}
+.footer-class-2{    
+    font-size: 22px;
+    background-color: grey;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}

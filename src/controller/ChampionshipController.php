@@ -8,7 +8,7 @@ use LeanProgrammers\Repository\PlayerRepository;
 
 class ChampionshipController
 {
-	
+
     public function index()
     {
         $championships = ChampionshipRepository::getAll();
@@ -35,9 +35,26 @@ class ChampionshipController
         $view = new View('championship');
 
         $view->render('show.php', ['championship' => $championship, 'players' => $players]);
- 
+
+    }
+
+    public function edit($id)
+    {
+
+        $championship = ChampionshipRepository::getById($id) ;
+
+        if(!empty($_POST)){
+            $championship->setName($_POST['name']);
+            $championship->save();
+        }
+
+        $players = PlayerRepository::getAll() ;
+
+        $view = new View('championship');
+
+        $view->render('edit.php', ['championship' => $championship, 'players' => $players]);
+
     }
 }
 
-//AQUI HAY QUE HACER LA CONSULTA A LA BBDD
 

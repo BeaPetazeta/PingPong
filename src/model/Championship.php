@@ -3,10 +3,12 @@ namespace LeanProgrammers\Model;
 
 use LeanProgrammers\Model\Player;
 use LeanProgrammers\Model\Round;
+use LeanProgrammers\Repository\ChampionshipRepository;
 
 class Championship{
 
     /*Variables*/
+    private $id;
     private $name; //Nombre del campeonato
 
     public $players = array(); //Lista de nombres de los jugadores
@@ -37,19 +39,19 @@ class Championship{
         return $this->name;
     }
     /*Esta funcion creará los partidos */
-    function matchMate(){
+    public function matchMate(){
         for($i=1; $i<count($this->players); $i+=2){
             $this->match[]= new Match ($this->players[$i],$this->players[$i+1]); //se crea un vector con los partidos
         }
     }
     //Esta función muestra los partidos
-    function showMatches(){
+    public function showMatches(){
         //hacemos un bucle para recorrer el vector de partidos y los muestra.
        return $this->match;
     }
 
     /* Esta funcion realiza los partidos y nos devuelve un ganador de partido*/
-    function tournament(){
+    public function tournament(){
         for($i; $i<count($this->points);$i+=2){
             $match1 = new Match($this->players[$i],$this->players[$i+1]);
             $winner = $match1->setMatch($this->points[$i],$this->points[$i+1]);
@@ -62,24 +64,24 @@ class Championship{
         return $roundWinners;
     }
 
-    function setPlayerList(  $playerList )
+    public function setPlayerList(  $playerList )
     {
       $this->players = $playerList;
     }
 
     //creamos el nombre del campeonato
-    function setName( $name )
+    public function setName( $name )
     {
     	$this->name = $name;
     }
     //recuperamos el nombre del campeonato almacenado
-    function getName()
+    public function getName()
     {
     	return $this->name;
     }
 
 
-    function getPlayers(){
+    public function getPlayers(){
         return $this->players;
     }
 
@@ -88,7 +90,7 @@ class Championship{
         $this->players[] = $player;
     }
     //Creo la primera ronda cogiendo la lista completa de los jugadores y uniéndolos de dos en dos
-    function createFirstRound(){
+    public function createFirstRound(){
         $round = new Round();
         //voy mirando la lista de jugadores para unirlos de dos en dos para crear un partido
         for($i=0; $i<count($this->players); $i+=2){
@@ -99,11 +101,11 @@ class Championship{
         return $round;
     }
     //Esta función muestra las rondas
-    function getRounds(){
+    public function getRounds(){
        return $this->rounds;
     }
 
-    function setPointsMatch($match, $pointsPlayer1, $pointsPlayer2){
+    public function setPointsMatch($match, $pointsPlayer1, $pointsPlayer2){
         $match->setPointsPlayer1($pointsPlayer1);
         $match->setPointsPlayer2($pointsPlayer2);
         $this->gameWinners[]=$match->getWinner();
@@ -117,7 +119,7 @@ class Championship{
         return $this->gameWinners;
     }
 
-    function nextRound($gameWinners){
+    public function nextRound($gameWinners){
         $round = new Round();
         //crear partidos con los ganadores de la primera ronda
         for ($i=0; $i < count($gameWinners); $i+2) {
@@ -125,6 +127,19 @@ class Championship{
             $round->addMatch($match);
         }
         return $round;
+    }
+    public function save(){
+        if(null != $this->id){
+            ChampionshipRepository::update($this);
+        }else{
+            ChampionshipRepository::create($this);
+        }
+    }
+    public function setId($id){
+        $this->id=$id;
+    }
+    public function getId(){
+        return $this->id;
     }
 
 }

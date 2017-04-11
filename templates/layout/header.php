@@ -12,8 +12,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/x-icon" href="./public/img/icono_login.png" />
-    <link rel="stylesheet" href="./public/css/custom.css">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= $basePath; ?>/public/img/icono_login.png" />
+    <link rel="stylesheet" href="<?= $basePath; ?>/public/css/custom.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
                     <li>Hola <?= $_SESSION['username']?></li> |
                     <li><a href="./player/logout">Cerrar sesión </a></li>
                 <?php else:?>
-                    <li><img src="./public/img/icono_login.png" alt="Logo login"></li>
+                    <li><img src="<?= $basePath; ?>/public/img/icono_login.png" alt="Logo login"></li>
                     <li><a href="">Login Empresa </a></li>                |
                     <li><a href="./player/login">Login Jugador</a></li>
                 <?php endif ?>

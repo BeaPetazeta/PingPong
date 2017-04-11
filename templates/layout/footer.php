@@ -25,7 +25,7 @@
             </div>
             <div class="footer-2">
                 <div class="col-xs-12 col-md-6">
-                    <img class="size-32" src="./public/img/logo.png" alt="Ping Pong at Work">
+                    <img class="size-32" src="<?= $basePath; ?>/public/img/logo.png" alt="Ping Pong at Work">
                     <ul class="socialIcons">
                         <a href="www.facebook.com/acceseo">
                             <i class="fa fa-2x fa-facebook-official " aria-hidden="true"></i>

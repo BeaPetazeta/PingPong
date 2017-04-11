@@ -6,5 +6,6 @@ return [
         'charset' => 'utf8',
         'user' => 'root',
         'password' => ''
-    ]
+    ],
+    'basePath' => "http://localhost/proyectoPingPong"
 ];

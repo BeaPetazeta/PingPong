@@ -13,6 +13,7 @@ class View{
 
     public function render(string $template, array $data = [])
     {
+        $basePath = Config::getInstance()->get('basePath');
         $data = array_merge($this->attributes, $data);
         $templateFile = $this->templatePath . $template;
         extract($data);

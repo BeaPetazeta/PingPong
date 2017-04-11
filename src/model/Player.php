@@ -1,6 +1,8 @@
 <?php
 namespace LeanProgrammers\Model;
 
+use LeanProgrammers\Repository\PlayerRepository;
+
 class Player
 {
     private $id = null;
@@ -41,5 +43,8 @@ class Player
     }
     public function getMail(){
         return $this->mail;
+    }
+    public function inscribe($championship){
+        PlayerRepository::inscribe($championship, $this);
     }
 }

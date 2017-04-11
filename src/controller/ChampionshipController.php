@@ -24,10 +24,15 @@ class ChampionshipController
 
      public function show($id)
     {
-    	// sacar capeonato p9or id
-    	$championship = ChampionshipRepository::getById($id);            	//
-    	$players = PlayerRepository::getAll();
+        $championship = ChampionshipRepository::getById($id);
         $currentUser = PlayerRepository::getById($_SESSION['userId']);
+        if(isset($_POST['newPlayer'])){
+            $currentUser->inscribe($championship);
+        }
+        $players = PlayerRepository::getAll();
+    	// sacar capeonato p9or id
+    	          	//
+
        // mostrar lista partidas de un campeonato.
         $view = new View('championship');
         $view->render('show.php', ['championship' => $championship, 'players' => $players, 'currentUser' => $currentUser]);

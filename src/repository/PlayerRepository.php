@@ -12,11 +12,9 @@ class PlayerRepository
         $stmt->execute();
         $result = $stmt->fetchAll();
         $players = [];
-
         foreach($result as $row){
             $players[] = self::createFromRow($row);
         }
-
         return $players;
     }
 
@@ -26,11 +24,9 @@ class PlayerRepository
         $stmt->execute([':id'=>$id]);
         $result = $stmt->fetchAll();
         $players = [];
-
         foreach($result as $row){
             $players[] = self::createFromRow($row);
         }
-
         return $players;
     }
 
@@ -39,7 +35,6 @@ class PlayerRepository
         $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email AND password = :password');
         $stmt->execute([':email'=>$email, ':password'=>$password]);
         $result = $stmt->fetch();
-
         if ($result != null){
             $player = self::createFromRow($result);
             return $player;
@@ -66,5 +61,10 @@ class PlayerRepository
         $stmt = $pdo->prepare('INSERT INTO users (id, name, nick, email, password) VALUES (NULL, :name, :nick, :email, :password);');
         $stmt->execute([':name'=>$name, ':nick'=>$nick, ':email'=>$email, ':password'=>$password]);
         return PlayerRepository::getById($pdo->lastInsertId());
+    }
+    public function inscribe($championship, $player){
+         $pdo = Database::getInstance();
+         $stmt = $pdo->prepare('INSERT INTO championship_has_users (championship, user) VALUES (:championship, :player)');
+         $stmt->execute([':championship'=>$championship->getId(),':player'=>$player->getId()]);
     }
 }

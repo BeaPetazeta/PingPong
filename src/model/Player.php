@@ -46,5 +46,9 @@ class Player
     }
     public function inscribe($championship){
         PlayerRepository::inscribe($championship, $this);
+        $championship->addPlayer($this);
+        if ($championship->countPlayers()==8){
+            $championship->createFirstRound();
+        }
     }
 }

@@ -90,10 +90,14 @@ class Championship{
     }
     //Creo la primera ronda cogiendo la lista completa de los jugadores y uniéndolos de dos en dos
     public function createFirstRound(){
-        $round = new Round();
+        $round = new Round($this);
+        $round = $round->save();
         //voy mirando la lista de jugadores para unirlos de dos en dos para crear un partido
         for($i=0; $i<count($this->players); $i+=2){
-            $round->addMatch(new Match ($this->players[$i],$this->players[$i+1])); //añade los partidos
+            $match=new Match ($this->players[$i],$this->players[$i+1]);
+            $match->setRound($round); //añade los partidos
+            $match->save();
+
         }
 
         $this->rounds[] = $round;
@@ -141,10 +145,10 @@ class Championship{
         return $this->id;
     }
     public function countPlayers(){
-        ChampionshipRepository::countPlayers($this);
+        return ChampionshipRepository::countPlayers($this);
     }
     public function hasRounds(){
-        ChampionshipRepository::hasRounds($this);
+        return ChampionshipRepository::hasRounds($this);
     }
     public function playerOnChamp($userId){
         $playerOnChamp = ChampionshipRepository::playerOnChamp($userId,$this->getId());

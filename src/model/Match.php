@@ -1,15 +1,15 @@
 <?php
 namespace LeanProgrammers\Model;
 
-class Match{
-	public $playerOne;//nombre del jugador 1 del partido
-	public $playerTwo;
-	/*Se declara la variable de tipo fecha donde se almacenará la fecha del partido*/
-	public $dateMatch;
-	/*Se declaran dos variables donde se almacenarán los puntos de cada jugador*/
+use LeanProgrammers\Repository\MatchRepository; 
 
-	public $pointsPlayerOne;
-	public $pointsPlayerTwo;
+class Match{
+    private $id = null;
+	private $player1;//nombre del jugador 1 del partido
+	private $player2;
+	/*Se declara la variable de tipo fecha donde se almacenará la fecha del partido*/
+	private $dateMatch;
+	/*Se declaran dos variables donde se almacenarán los puntos de cada jugador*/
 
 	private $pointsPlayer1;
 	private $pointsPlayer2;
@@ -20,6 +20,9 @@ class Match{
 	function __construct( $player1, $player2 ){
        $this->player1 = $player1;
        $this->player2 = $player2;
+    }
+    public function getId(){
+        return $this->id;
     }
 
     /*Función setDate, para introducirle fecha a el partido*/
@@ -36,8 +39,8 @@ class Match{
     public function getPlayersName()
     {
     	$playersArray = array();
-    	array_push( $playersArray, $this->playerOne );
-    	array_push( $playersArray, $this->playerTwo );
+    	array_push( $playersArray, $this->player1 );
+    	array_push( $playersArray, $this->player2 );
     	return $playersArray;
     }
 
@@ -100,6 +103,14 @@ class Match{
 
     public function getRound(){
         return $this->round;
+    }
+
+    public function save(){
+        if(null == $this->getId()){
+            MatchRepository::create($this);
+        }else{
+            MatchRepository::update($this);
+        }
     }
 
 

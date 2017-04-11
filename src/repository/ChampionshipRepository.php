@@ -51,10 +51,10 @@ class ChampionshipRepository{
         $stmt->execute([':name'=>$championship->getName()]);
     }
 
-    public function countPlayers(){
+    public function countPlayers($championship){
         $pdo = Database::getInstance();
-        $stmt = $pdo->prepare('SELECT COUNT(user) AS cont FROM championship_has_users');
-        $stmt->execute();
+        $stmt = $pdo->prepare('SELECT COUNT(user) AS cont FROM championship_has_users WHERE championship = :championship');
+        $stmt->execute([':championship'=>$championship->getId()]);
         $players = $stmt->fetch();
         return $players['cont'];
     }

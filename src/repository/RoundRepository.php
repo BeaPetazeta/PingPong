@@ -16,12 +16,17 @@ class RoundRepository{
         return $round;
 	}
     static private function createFromRow($row){
-        $round = new Round();
         $championship = ChampionshipRepository::getById($row['championship_id']);
-        $round->setChampionship($championship);
+        $round = new Round($championship);
         return $round;
     }
-
+    public function create($round){
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare("INSERT INTO round (championship_id) VALUES (:id)");
+        $stmt->execute([':id'=>$round->getChampionship()->getId()]);
+        $round->setId($pdo->lastInsertId());
+        return $round;
+    }
 }
 
 ?>

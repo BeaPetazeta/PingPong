@@ -3,11 +3,23 @@ namespace LeanProgrammers\Model;
 
 use LeanProgrammers\Model\Match;
 use LeanProgrammers\Model\Championship;
+use LeanProgrammers\Repository\RoundRepository;
 
 class Round
 {
+    private $id = null;
     private $matches = array();//Array de partidos
     private $championship;
+
+    public function __construct($championship){
+        $this->championship = $championship;
+    }
+    public function getId(){
+        return $this->id;
+    }
+    public function setId($id){
+        $this->id = $id;
+    }
 
     public function getMatches(){
         return $this->matches;
@@ -30,6 +42,13 @@ class Round
     }
     public function getChampionship(){
         return $this->championship;
+    }
+    public function save(){
+        if(null != $this->getId()){
+            RoundRepository::update($this);
+        }else{
+            return RoundRepository::create($this);
+        }
     }
 }
 

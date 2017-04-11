@@ -106,3 +106,15 @@ input{
     margin-top: 50px;
     margin-bottom: 50px;
 }
+/* Estilos para player show*/
+.border{
+    margin-bottom: 25px;
+    margin-top: 25px;
+    border: solid 1px black;
+}
+.options-player{
+    margin-bottom: 50px;
+}
+.option-player-tittle{
+    margin-top: 50px;
+}

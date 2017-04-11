@@ -38,11 +38,11 @@
             <ul>
                 <?php if(isset($_SESSION['username']) ):?>
                     <li>Hola <?= $_SESSION['username']?></li> |
-                    <li><a href="./player/logout">Cerrar sesión </a></li>
+                    <li><a href="<?= $basePath; ?>/player/logout">Cerrar sesión </a></li>
                 <?php else:?>
                     <li><img src="<?= $basePath; ?>/public/img/icono_login.png" alt="Logo login"></li>
                     <li><a href="">Login Empresa </a></li>                |
-                    <li><a href="./player/login">Login Jugador</a></li>
+                    <li><a href="<?= $basePath; ?>/player/login">Login Jugador</a></li>
                 <?php endif ?>
             </ul>
         </div>

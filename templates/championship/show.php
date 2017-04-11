@@ -19,21 +19,23 @@
                     <li><?= $championship->getName(); ?></li>
                 </div>
 
-                <?php if($championship->countPlayers()>=8): ?>
-                    Inscripción Cerrada
-                    <?php elseif(isset($_SESSION['username']) && !$championship->playerOnChamp($currentUser->getId())): ?>
-                        <!--<a href="">Inscribirme</a>-->
-                        <input type="submit" name="newPlayer" value="Añadir">
-                    <?php else: ?>
-                        <!-- Loguéate para inscribirte -->
-                <?php endif ?>
 
                 <div class="col-xs-12 col-md-3 text-center options">
                     <img  src="<?= $basePath; ?>/public/img/bloc.png" alt="Añadir nuevo jugador">
                     <h2>Inscripción</h2>
                     <?php $nameplayer = $_SESSION['username'] ?>
                    <input type="text" value="<?=$nameplayer ?>" disabled>
-                    <input type="submit" name="newPlayer" value="Añadir">
+                   <?php if($championship->countPlayers()>=8): ?>
+                        Inscripción Cerrada
+                    <?php elseif(isset($_SESSION['username'])): 
+                        if ($championship->playerOnChamp($currentUser->getId())):?>
+                            <br> Ya inscrito.
+                        <?php else: ?>
+                            <input type="submit" name="newPlayer" value="Añadir">
+                        <?php endif ?>
+                    <?php else: ?>
+                        Loguéate para inscribirte
+                    <?php endif ?>
                     <ul>
                         <?php foreach($championship->getPlayers() as $player): ?>
                             <li><?= $player ?></li>

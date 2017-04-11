@@ -81,7 +81,12 @@ class MatchRepository{
         }
         return $matches;
     }
+    static public function create($match){
+        $pdo = Database::getInstance();
 
+        $stmt = $pdo->prepare('INSERT INTO game (round_id, `date`, pointsP1, pointsP2, player1, player2) VALUES (:round_id, :matchDate, :pointsP1, :pointsP2, :idPlayer1, :idPlayer2)');
+        $stmt->execute([':round_id'=>$match->getRound()->getId(), ':matchDate'=>$match->getDate(), ':pointsP1'=>$match->getPointsPlayer1(), ':pointsP2'=>$match->getPointsPlayer2(), ':idPlayer1'=>$match->getPlayer1()->getId(), ':idPlayer2'=>$match->getPlayer2()->getId()]);
+    }
 }
 
 ?>

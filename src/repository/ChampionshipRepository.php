@@ -10,7 +10,7 @@ class ChampionshipRepository{
 //devuelve lista de campeonatos
     static public function getAll(){
     	$pdo = Database::getInstance();
-        $stmt = $pdo->prepare('SELECT name FROM championship');
+        $stmt = $pdo->prepare('SELECT id,name FROM championship');
         $stmt->execute();
         $result = $stmt->fetchAll();
 

@@ -13,9 +13,9 @@ class ChampionshipRepository{
         $stmt = $pdo->prepare('SELECT id,name FROM championship');
         $stmt->execute();
         $result = $stmt->fetchAll();
-
         return $result;
     }
+
 //devuelve el campeonato introduciendole un id
     static public function getById($id){
 
@@ -23,10 +23,7 @@ class ChampionshipRepository{
         $stmt = $pdo->prepare("SELECT * FROM championship where id=:id");
         $stmt->execute([':id'=>$id]);
         $result = $stmt->fetch(); //solo fetch porque queremos un solo campeonato
-
         $championship = self::createFromRow($result);
-
-
         return $championship;
     }
 
@@ -48,6 +45,12 @@ class ChampionshipRepository{
             WHERE id=:id ');
         $stmt->execute([':name'=>$championship->getName(),':id'=>$championship->getId()]);
     }
+    public function create($championship){
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare('INSERT INTO championship (name) VALUES (:name)');
+        $stmt->execute([':name'=>$championship->getName()]);
+    }
+
     public function countPlayers(){
         $pdo = Database::getInstance();
         $stmt = $pdo->prepare('SELECT COUNT(user) AS cont FROM championship_has_users');
@@ -69,4 +72,5 @@ class ChampionshipRepository{
         $activeUser = $stmt->fetch();
         return $activeUser;
     }
+
 }

@@ -85,8 +85,7 @@ class Championship{
         return $this->players;
     }
 
-    public function addPlayer($name){
-        $player = new Player($name);
+    public function addPlayer($player){
         $this->players[] = $player;
     }
     //Creo la primera ronda cogiendo la lista completa de los jugadores y uniéndolos de dos en dos
@@ -141,6 +140,19 @@ class Championship{
     public function getId(){
         return $this->id;
     }
-
+    public function countPlayers(){
+        ChampionshipRepository::countPlayers($this);
+    }
+    public function hasRounds(){
+        ChampionshipRepository::hasRounds($this);
+    }
+    public function playerOnChamp($userId){
+        $playerOnChamp = ChampionshipRepository::playerOnChamp($userId,$this->getId());
+        if(null != $playerOnChamp){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 

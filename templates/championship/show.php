@@ -17,10 +17,16 @@ Lista de partidos:
 Lista de jugadores:
 <ul>
 	<?php
-	foreach($players as $player): ?>
-		<li><?= $player->getName(); ?></li>
+	foreach($championship->getPlayers() as $player): ?>
+		<li><?= $player ?></li>
 	<?php endforeach ?>
 </ul>
+<br>
+<?php if($championship->countPlayers()>=8): ?>
+    Inscripción Cerrada
+<?php elseif(isset($_SESSION['username']) && !$championship->playerOnChamp($currentUser->getId())): ?>
+    <a href="">Inscribirme</a>
+<?php else: ?>
+    Loguéate para inscribirte
+<?php endif ?>
 
-
-	

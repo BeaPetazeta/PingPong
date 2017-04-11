@@ -25,19 +25,20 @@ class PlayerController
     	$view->render('show.php',['player'=>$player,'matches'=>$matches]);
     }
 
-    public function login(){        
+    public function login(){
         if(isset($_POST['login'])){
             $player = PlayerRepository::existYet($_POST['email'], $_POST['password']);
             if($player != false){
                 $_SESSION['username'] = $player->getName();
+                $_SESSION['userId'] = $player->getId();
                 $this->show($player->getId());
-            }    
+            }
         }else if(isset($_POST['register'])){
             $this->register();
         }else{
             $view = new View('player');
-            $view->render('login.php'); 
-        }              
+            $view->render('login.php');
+        }
     }
 
     public function logout(){
@@ -52,6 +53,7 @@ class PlayerController
             $controller = new PlayerRepository();
             $player = $controller->register($_POST['username'], $_POST['username'], $_POST['email'], $_POST['password']);
             $_SESSION['username'] = $player->getName();
+            $_SESSION['userId'] = $player->getId();
             $this->show($player->getId());
         }else{
             return false;

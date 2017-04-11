@@ -30,11 +30,13 @@ class ChampionshipController
     	//
     	$players = PlayerRepository::getAll() ;
 
+        $currentUser = PlayerRepository::getById($_SESSION['userId']) ;
+
        // mostrar lista partidas de un campeonato.
 
         $view = new View('championship');
 
-        $view->render('show.php', ['championship' => $championship, 'players' => $players]);
+        $view->render('show.php', ['championship' => $championship, 'players' => $players, 'currentUser' => $currentUser]);
 
     }
 

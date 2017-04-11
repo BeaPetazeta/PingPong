@@ -20,12 +20,26 @@ class PlayerRepository
         return $players;
     }
 
+    static public function getPlayersByChampionshipId($id){
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare('SELECT * FROM users INNER JOIN championship_has_users ON championship_has_users.user=users.id where championship_has_users.championship=:id');
+        $stmt->execute([':id'=>$id]);
+        $result = $stmt->fetchAll();
+        $players = [];
+
+        foreach($result as $row){
+            $players[] = self::createFromRow($row);
+        }
+
+        return $players;
+    }
+
     static public function existYet($email, $password){
         $pdo = Database::getInstance();
         $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email AND password = :password');
-        $stmt->execute([':email'=>$email, ':password'=>$password]);        
-        $result = $stmt->fetch();        
-        
+        $stmt->execute([':email'=>$email, ':password'=>$password]);
+        $result = $stmt->fetch();
+
         if ($result != null){
             $player = self::createFromRow($result);
             return $player;
